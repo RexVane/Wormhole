@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# macOS 上构建虫洞桌宠.app(单文件 onefile -> .app 包)。
+# 用法:bash packaging/build-mac.sh
+set -euo pipefail
+cd "$(dirname "$0")"
+
+echo "==> 检查依赖"
+python3 -c "import PySide6" 2>/dev/null   || pip3 install PySide6
+python3 -c "import cryptography" 2>/dev/null || pip3 install cryptography
+python3 -c "import PyInstaller" 2>/dev/null  || pip3 install pyinstaller
+# 可选:常驻所有桌面(Spaces)效果需要 pyobjc;不装也能正常用
+python3 -c "import AppKit" 2>/dev/null || pip3 install pyobjc-framework-Cocoa || true
+
+echo "==> 打包"
+pyinstaller wormhole-pet.spec --noconfirm --clean
+
+echo "==> 完成:dist/虫洞桌宠.app"
+echo "   运行示例:"
+echo "   ./dist/虫洞桌宠.app/Contents/MacOS/虫洞桌宠 --host <服务器IP> --tls --secret '<口令>' --password '<FTP密码>'"

@@ -1,0 +1,9 @@
+[project]
+name = "pyftp-course-design"
+version = "0.2.0"
+description = "A coursework FTP server with switchable concurrency models, resume, chroot isolation and rate limiting."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
