@@ -1,4 +1,4 @@
-"""PyFTP course-design server package.
+"""PyFTP server package.
 
 模块组成：
   config       配置与运行期参数对象、用户表

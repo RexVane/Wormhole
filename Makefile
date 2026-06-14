@@ -19,7 +19,7 @@ bench:
 cert:
 	mkdir -p certs
 	openssl req -x509 -newkey rsa:2048 -keyout certs/server.key -out certs/server.crt \
-		-days 365 -nodes -subj "/CN=pyftp-course-design"
+		-days 365 -nodes -subj "/CN=pyftp"
 	@echo "证书已生成: certs/server.crt + certs/server.key"
 
 clean:

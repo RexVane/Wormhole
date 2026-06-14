@@ -78,7 +78,7 @@ class FTPSession:
     # ---------- 主循环（阻塞式，供 thread / process 模型使用） ----------
     def handle(self) -> None:
         log(f"客户端连接: {self.addr[0]}:{self.addr[1]}")
-        self.send(220, "Welcome to PyFTP server (course design)")
+        self.send(220, "Welcome to PyFTP server")
         self._fp = self.conn.makefile("rb")
         try:
             while self.alive:
@@ -119,7 +119,7 @@ class FTPSession:
     def send_welcome(self) -> None:
         """select 模型在连接建立时手动发送欢迎语。"""
         log(f"客户端连接: {self.addr[0]}:{self.addr[1]}")
-        self.send(220, "Welcome to PyFTP server (course design)")
+        self.send(220, "Welcome to PyFTP server")
 
     def feed(self, data: bytes) -> None:
         """select 模型：喂入一段非阻塞读到的字节，按行切分后逐条处理。"""

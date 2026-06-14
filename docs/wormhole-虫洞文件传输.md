@@ -10,7 +10,7 @@
 
 ## 原理与架构
 
-虫洞分为两层：底层复用课程设计的 FTP 服务器当中转站（里子），上层是同步引擎 + 桌宠挂件（面子）。
+虫洞分为两层：底层复用本项目的 FTP 服务器当中转站（里子），上层是同步引擎 + 桌宠挂件（面子）。
 
 ```
    电脑A                      FTP服务器                      电脑B
@@ -151,9 +151,9 @@ PYTHONPATH=src python3 -m pyftp_server.wormhole.pet \
 注意：
 
 - 端到端加密需要 `pip install cryptography`（仅客户机，服务器不用）。
-- 自签证书场景客户端不校验证书链（防窃听已足够；防中间人需正式 CA 证书，课程范围内说明即可）。
+- 自签证书场景客户端不校验证书链（防窃听已足够；防中间人需正式 CA 证书）。
 - 两边 `--secret` 不一致时文件按密文保存不丢失，提示「解密失败」。
-- TLS 暂不支持 `select` 并发模型（非阻塞 TLS 握手超出课程范围），用默认 thread 即可。
+- TLS 暂不支持 `select` 并发模型（非阻塞 TLS 握手较复杂），用默认 thread 即可。
 
 ## 常见问题
 
@@ -190,7 +190,7 @@ PYTHONPATH=src python3 -m pyftp_server --host 0.0.0.0 --port 2121 \
 PYTHONPATH=src python3 -m pyftp_server.wormhole.pet --host <公网IP> --password '你的强密码'
 ```
 
-> ⚠️ FTP 是明文协议，公网部署仅建议课程演示用：务必改强密码，演示后及时关闭服务器或限制安全组来源 IP。长期使用应升级 FTPS（见 v2 计划）。
+> ⚠️ FTP 是明文协议，公网部署需谨慎：务必改强密码，用完及时关闭服务器或限制安全组来源 IP。长期使用应升级 FTPS（见 v2 计划）。
 
 ## 当前版本范围
 

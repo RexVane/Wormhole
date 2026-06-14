@@ -27,7 +27,7 @@ from .utils import log
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="pyftp_server",
-        description="课程设计 FTP 服务器（Python 实现，支持三种并发模型）")
+        description="FTP 服务器（Python 实现，支持三种并发模型）")
     p.add_argument("--host", default=DEFAULT_HOST, help=f"监听地址 (默认 {DEFAULT_HOST})")
     p.add_argument("--port", type=int, default=DEFAULT_PORT,
                    help=f"控制端口 (默认 {DEFAULT_PORT}；标准 FTP 为 21，需提权)")
@@ -63,7 +63,7 @@ def config_from_args(args) -> ServerConfig:
                 f"先生成自签证书：make cert  (或 openssl req -x509 -newkey rsa:2048 "
                 f"-keyout certs/server.key -out certs/server.crt -days 365 -nodes -subj /CN=pyftp)")
         if args.model == "select":
-            raise SystemExit("--tls 暂不支持 select 模型(非阻塞 TLS 握手超出课程范围)，请用 thread/process")
+            raise SystemExit("--tls 暂不支持 select 模型(非阻塞 TLS 握手较复杂，此处不支持)，请用 thread/process")
         tls_cert, tls_key = args.tls_cert, args.tls_key
     cfg = ServerConfig(
         host=args.host, port=args.port, root=args.root, model=args.model,

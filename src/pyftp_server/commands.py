@@ -139,7 +139,7 @@ def cmd_auth(s, arg: str) -> None:
         s.send(534, "TLS not configured (start server with --tls)")
         return
     if s.cfg.model == "select":
-        # select 模型用非阻塞 socket，TLS 握手需特殊处理，课程设计范围内不支持
+        # select 模型用非阻塞 socket，TLS 握手需特殊处理，此处暂不支持
         s.send(534, "TLS unavailable in select model, use thread/process")
         return
     s.send(234, "AUTH TLS successful, starting handshake")
