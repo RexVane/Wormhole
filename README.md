@@ -1,5 +1,8 @@
 # PyFTP Course Design
 
+[![CI](https://github.com/RexVane/Wormhole/actions/workflows/ci.yml/badge.svg)](https://github.com/RexVane/Wormhole/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 > 计算机网络课程设计：基于 Python 标准库 socket 实现的 FTP 服务器，支持三种可切换并发模型、断点续传、每用户 chroot 隔离、登录锁定与限速。
 
 PyFTP 是一个教学型 FTP 服务器，严格遵循 RFC 959 的控制连接/数据连接分离机制，能被 FileZilla、Windows 自带 `ftp` 命令、浏览器 `ftp://` 正常连接、登录、浏览、上传、下载。模块按职责拆分，便于阅读、运行、测试与答辩展示。
